@@ -38,6 +38,19 @@
             "expr": "COUNT(*)",
             "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
             "displayName": "Count"
+          },
+          {
+            "displayName": "Approval Rate by Value",
+            "format": {
+              "type": "percentage",
+              "decimalPlaces": {
+                "type": "exact",
+                "places": 2.0
+              }
+            },
+            "name": "approval_rate_by_value",
+            "expr": "SUM(`total_approved_bdt`) / SUM(`total_requested_bdt`)",
+            "comment": "Ratio of approved to requested loan value — computed by the query, moves automatically as approval patterns shift"
           }
         ]
       }
@@ -549,6 +562,405 @@
             "x": 6,
             "y": 9,
             "width": 6,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "aca33fe4",
+      "displayName": "Repayment, Collections & Credit Trend",
+      "layout": [
+        {
+          "widget": {
+            "name": "total-applications",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f61f20c4",
+                  "fields": [
+                    {
+                      "name": "sum(application_count)",
+                      "expression": "SUM(`application_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Total Applications",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(application_count)",
+                  "style": {
+                    "fontColor": {
+                      "themeColorType": "visualizationColors",
+                      "position": 3
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 0,
+            "width": 5,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "approval-rate-by-value",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f61f20c4",
+                  "fields": [
+                    {
+                      "name": "measure(approval_rate_by_value)",
+                      "expression": "MEASURE(`approval_rate_by_value`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Approval Rate by Value",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "sparkChart": {
+                "hide": true
+              },
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(approval_rate_by_value)",
+                  "format": {
+                    "type": "number-percent",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 2
+                    }
+                  },
+                  "style": {
+                    "fontColor": {
+                      "themeColorType": "visualizationColors",
+                      "position": 3
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 5,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "repayment-status-over-time",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "e84b406f",
+                  "fields": [
+                    {
+                      "name": "payment_status",
+                      "expression": "`payment_status`"
+                    },
+                    {
+                      "name": "monthly(due_month)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `due_month`)"
+                    },
+                    {
+                      "name": "sum(installment_count)",
+                      "expression": "SUM(`installment_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Repayment Status Over Time",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(due_month)",
+                  "displayName": "Due Month",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(installment_count)",
+                  "displayName": "Total Installment Count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "payment_status",
+                  "displayName": "Payment Status",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "overdue-exposure-delinquency-bucket",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "bce69913",
+                  "fields": [
+                    {
+                      "name": "dpd_bucket",
+                      "expression": "`dpd_bucket`"
+                    },
+                    {
+                      "name": "sum(total_overdue_bdt)",
+                      "expression": "SUM(`total_overdue_bdt`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Overdue Exposure by Delinquency Bucket",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "dpd_bucket",
+                  "displayName": "DPD Bucket",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_overdue_bdt)",
+                  "displayName": "Total Overdue BDT",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "dpd_bucket",
+                  "displayName": "DPD Bucket",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "collections-escalation-funnel",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "bce69913",
+                  "fields": [
+                    {
+                      "name": "collection_stage",
+                      "expression": "`collection_stage`"
+                    },
+                    {
+                      "name": "sum(case_count)",
+                      "expression": "SUM(`case_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Collections Escalation Funnel",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "funnel",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(case_count)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Case Count"
+                },
+                "y": {
+                  "fieldName": "collection_stage",
+                  "displayName": "Collection Stage",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "x"
+                    }
+                  }
+                },
+                "color": {
+                  "fieldName": "collection_stage",
+                  "displayName": "Collection Stage",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 9,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bureau-score-trend-risk-segment",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8262db7a",
+                  "fields": [
+                    {
+                      "name": "monthly(report_month)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `report_month`)"
+                    },
+                    {
+                      "name": "avg(avg_bureau_score)",
+                      "expression": "AVG(`avg_bureau_score`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Bureau Score Trend by Risk Segment",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "mark": {
+                "marker": {
+                  "shape": "circle"
+                }
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(report_month)",
+                  "displayName": "Report Month",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "avg(avg_bureau_score)",
+                  "displayName": "Average Bureau Score",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 15,
+            "width": 12,
             "height": 6
           }
         }
