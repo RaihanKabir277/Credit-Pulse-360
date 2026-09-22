@@ -84,4 +84,6 @@ Two-page executive dashboard connected via Databricks SQL Warehouse:
 ## Author
 
 **Raihan Kabir** — Junior Data Engineer
-Minio - Databricks - Delta Lake - Medallion Architecture - SQL-first Pipeline Design
+
+
+## Minio - Databricks - Delta Lake - Medallion Architecture - SQL-first Pipeline Design
