@@ -78,7 +78,7 @@ Two-page executive dashboard connected via Databricks SQL Warehouse:
 - **Portfolio & Risk** — disbursement trends, portfolio mix, exposure by region, borrower risk distribution
 - **Repayment, Collections & Credit Trend** — repayment performance over time, delinquency severity, collections funnel, bureau score trends
 
-![Portfolio & Risk](Dashboard/Portfolio & Risk.jpg)
+![Portfolio & Risk](Dashboard/Portfolio_&_Risk.jpg)
 ![Repayment, Collections & Credit Trend](screenshots/repayment-collections-credit-trend.png)
 
 ## Author
