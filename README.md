@@ -79,9 +79,9 @@ Two-page executive dashboard connected via Databricks SQL Warehouse:
 - **Repayment, Collections & Credit Trend** — repayment performance over time, delinquency severity, collections funnel, bureau score trends
 
 ![Portfolio & Risk](Dashboard/Portfolio_&_Risk.jpg)
-![Repayment, Collections & Credit Trend](screenshots/repayment-collections-credit-trend.png)
+![Repayment, Collections & Credit Trend](Dashboard/Repayment_Collections_&_Credit_Trend.jpg)
 
 ## Author
 
-**Raihan Kabir** — Associate Data Engineer
-Databricks - Delta Lake - Medallion Architecture - SQL-first Pipeline Design
+**Raihan Kabir** — Junior Data Engineer
+Minio - Databricks - Delta Lake - Medallion Architecture - SQL-first Pipeline Design
