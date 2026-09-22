@@ -1,0 +1,589 @@
+{
+  "datasets": [
+    {
+      "name": "8879a10b",
+      "displayName": "Portfolio Summary",
+      "config": {
+        "version": "1.1",
+        "source": "creditpulse.gold.loan_portfolio_summary",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "f61f20c4",
+      "displayName": "Application Funnel",
+      "config": {
+        "version": "1.1",
+        "source": "creditpulse.gold.application_funnel",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "e84b406f",
+      "displayName": "Repayment Performance",
+      "config": {
+        "version": "1.1",
+        "source": "creditpulse.gold.repayment_performance",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bce69913",
+      "displayName": "Collections Summary",
+      "config": {
+        "version": "1.1",
+        "source": "creditpulse.gold.collections_summary",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "50019d11",
+      "displayName": "Customer Risk Profile",
+      "config": {
+        "version": "1.1",
+        "source": "creditpulse.gold.credit_risk_distribution",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    },
+    {
+      "name": "8262db7a",
+      "displayName": "Bureau Score Trend",
+      "config": {
+        "version": "1.1",
+        "source": "creditpulse.gold.bureau_score_trend",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "62327de5",
+      "displayName": "Portfolio & Risk",
+      "layout": [
+        {
+          "widget": {
+            "name": "total-disbursed-bdt",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8879a10b",
+                  "fields": [
+                    {
+                      "name": "sum(total_principal_disbursed_bdt)",
+                      "expression": "SUM(`total_principal_disbursed_bdt`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Total Disbursed (BDT)",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(total_principal_disbursed_bdt)",
+                  "style": {
+                    "fontColor": {
+                      "themeColorType": "visualizationColors",
+                      "position": 3
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "outstanding-principal-bdt",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8879a10b",
+                  "fields": [
+                    {
+                      "name": "sum(total_outstanding_bdt)",
+                      "expression": "SUM(`total_outstanding_bdt`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Outstanding Principal (BDT)",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(total_outstanding_bdt)",
+                  "style": {
+                    "fontColor": {
+                      "themeColorType": "visualizationColors",
+                      "position": 3
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "active-loan-accounts",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8879a10b",
+                  "fields": [
+                    {
+                      "name": "sum(loan_count)",
+                      "expression": "SUM(`loan_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Active Loan Accounts",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(loan_count)",
+                  "style": {
+                    "fontColor": {
+                      "themeColorType": "visualizationColors",
+                      "position": 3
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "avg-interest-rate",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8879a10b",
+                  "fields": [
+                    {
+                      "name": "avg(avg_interest_rate)",
+                      "expression": "AVG(`avg_interest_rate`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Avg Interest Rate",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "avg(avg_interest_rate)",
+                  "formatTemplate": "{{ @formatted }}%",
+                  "style": {
+                    "fontColor": {
+                      "themeColorType": "visualizationColors",
+                      "position": 3
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 0,
+            "width": 3,
+            "height": 3
+          }
+        },
+        {
+          "widget": {
+            "name": "monthly-disbursement-trend",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8879a10b",
+                  "fields": [
+                    {
+                      "name": "monthly(disbursement_month)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `disbursement_month`)"
+                    },
+                    {
+                      "name": "sum(total_principal_disbursed_bdt)",
+                      "expression": "SUM(`total_principal_disbursed_bdt`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Monthly Disbursement Trend",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "mark": {
+                "marker": {
+                  "shape": "circle"
+                },
+                "size": 0
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(disbursement_month)",
+                  "displayName": "Disbursement Month",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_principal_disbursed_bdt)",
+                  "displayName": "Total Principal Disbursed BDT",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "portfolio-mix-by-loan-type",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8879a10b",
+                  "fields": [
+                    {
+                      "name": "loan_type",
+                      "expression": "`loan_type`"
+                    },
+                    {
+                      "name": "sum(loan_count)",
+                      "expression": "SUM(`loan_count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Portfolio Mix by Loan Type",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "loan_type",
+                  "displayName": "Loan Type",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(loan_count)",
+                  "displayName": "Total Loan Count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "loan_type",
+                  "displayName": "Loan Type",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "outstanding-exposure-by-division",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "8879a10b",
+                  "fields": [
+                    {
+                      "name": "customers_division",
+                      "expression": "`customers_division`"
+                    },
+                    {
+                      "name": "sum(total_outstanding_bdt)",
+                      "expression": "SUM(`total_outstanding_bdt`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Outstanding Exposure by Division",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "customers_division",
+                  "displayName": "Customer Division",
+                  "scale": {
+                    "type": "categorical",
+                    "sort": {
+                      "by": "y"
+                    }
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_outstanding_bdt)",
+                  "displayName": "Total Outstanding BDT",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "customers_division",
+                  "displayName": "Customer Division",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 9,
+            "width": 6,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "canvasBackgroundColor": {
+        "light": "#FAFAFB",
+        "dark": "#1F272D"
+      },
+      "widgetBackgroundColor": {
+        "light": "#FFFFFF",
+        "dark": "#11171C"
+      },
+      "widgetBorderColor": {
+        "light": "#A89F9F",
+        "dark": "#FFFFFF"
+      },
+      "fontColor": {
+        "light": "#11171C",
+        "dark": "#E8ECF0"
+      },
+      "selectionColor": {
+        "light": "#2272B4",
+        "dark": "#8ACAFF"
+      },
+      "widgetHeaderAlignment": "CENTER",
+      "widgetMargin": 12,
+      "widgetCornerRadius": 12,
+      "widgetShadow": 100
+    },
+    "applyModeEnabled": false
+  }
+}

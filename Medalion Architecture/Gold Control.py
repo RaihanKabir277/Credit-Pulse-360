@@ -1,4 +1,8 @@
 # Databricks notebook source
+# /// script
+# [tool.databricks.environment]
+# environment_version = "5"
+# ///
 CATALOG = "creditpulse"
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS {CATALOG}.gold")
  
