@@ -1,7 +1,7 @@
 # Databricks notebook source
 import requests
 
-url = "http://103.95.211.33:9000/minio/health/live"
+url = "************/minio/health/live"
 
 response = requests.get(url, timeout=10)
 
@@ -12,7 +12,7 @@ print("Response:", response.text)
 
 import requests
 
-url = "http://103.95.211.33:9000/bronze"
+url = "************/bronze"
 
 response = requests.get(url, timeout=10)
 
@@ -25,11 +25,11 @@ print(response.text[:2000])
 import requests
 from requests.auth import HTTPBasicAuth
 
-url = "http://103.95.211.33:9000/bronze"
+url = "************/bronze"
 
 response = requests.get(
     url,
-    auth=HTTPBasicAuth("databricks", "Databricks@123"),
+    auth=HTTPBasicAuth("************", "************"),
     timeout=10
 )
 
@@ -43,10 +43,10 @@ import boto3
 
 s3 = boto3.client(
     "s3",
-    endpoint_url="http://103.95.211.33:9000",
-    aws_access_key_id="databricks",
-    aws_secret_access_key="Databricks@123",
-    region_name="us-east-1",
+    endpoint_url="************",
+    aws_access_key_id="************",
+    aws_secret_access_key="************",
+    region_name="************",
 )
 
 response = s3.list_buckets()
@@ -113,10 +113,10 @@ from io import BytesIO
 # MinIO connection
 s3 = boto3.client(
     "s3",
-    endpoint_url="http://103.95.211.33:9000",
-    aws_access_key_id="databricks",
-    aws_secret_access_key="Databricks@123",
-    region_name="us-east-1"
+    endpoint_url="************",
+    aws_access_key_id="************",
+    aws_secret_access_key="************",
+    region_name="************"
 )
 
 # Sample data
@@ -199,7 +199,7 @@ df_test.show()
 
 spark.conf.set(
     "spark.hadoop.fs.s3a.endpoint",
-    "http://103.95.211.33:9000"
+    "************"
 )
 
 print(
@@ -242,10 +242,10 @@ import boto3
 
 s3 = boto3.client(
     "s3",
-    endpoint_url="http://103.95.211.33:9000",
-    aws_access_key_id="databricks",
-    aws_secret_access_key="Databricks@123",
-    region_name="us-east-1"
+    endpoint_url="************",
+    aws_access_key_id="************",
+    aws_secret_access_key="************",
+    region_name="************"
 )
 
 # Test the connection
@@ -267,10 +267,10 @@ import boto3
 
 s3 = boto3.client(
     "s3",
-    endpoint_url="http://103.95.211.33:9000",
-    aws_access_key_id="databricks",
-    aws_secret_access_key="Databricks@123",
-    region_name="us-east-1"
+    endpoint_url="************",
+    aws_access_key_id="************",
+    aws_secret_access_key="************",
+    region_name="************"
 )
 
 print("MinIO client created successfully!")
