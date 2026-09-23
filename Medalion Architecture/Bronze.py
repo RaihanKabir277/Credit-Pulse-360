@@ -3,10 +3,10 @@ import boto3
 
 s3 = boto3.client(
     "s3",
-    endpoint_url="http://103.95.211.33:9000",
-    aws_access_key_id="databricks",
-    aws_secret_access_key="Databricks@123",
-    region_name="us-east-1"
+    endpoint_url="************",
+    aws_access_key_id="************",
+    aws_secret_access_key="************",
+    region_name="************"
 )
 
 # Test the connection
@@ -28,10 +28,10 @@ import boto3
 
 s3 = boto3.client(
     "s3",
-    endpoint_url="http://103.95.211.33:9000",
-    aws_access_key_id="databricks",
-    aws_secret_access_key="Databricks@123",
-    region_name="us-east-1"
+    endpoint_url="************",
+    aws_access_key_id="************",
+    aws_secret_access_key="************",
+    region_name="************"
 )
 
 print("MinIO client created successfully!")
