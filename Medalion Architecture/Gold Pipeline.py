@@ -152,9 +152,9 @@ for table, count in results_summary:
 import boto3
 from io import StringIO
  
-MINIO_ENDPOINT = "http://103.95.211.33:9000"
-MINIO_ACCESS_KEY = "databricks"
-MINIO_SECRET_KEY = "Databricks@123"
+MINIO_ENDPOINT = "************"
+MINIO_ACCESS_KEY = "************"
+MINIO_SECRET_KEY = "************"
  
 CATALOG = "creditpulse"
 GOLD_BUCKET = "gold"          
@@ -165,7 +165,7 @@ s3 = boto3.client(
     endpoint_url=MINIO_ENDPOINT,
     aws_access_key_id=MINIO_ACCESS_KEY,
     aws_secret_access_key=MINIO_SECRET_KEY,
-    region_name="us-east-1",
+    region_name="************",
 )
 gold_tables = spark.table(f"{CATALOG}.control.gold_metrics").filter("is_active = true").collect()
  
